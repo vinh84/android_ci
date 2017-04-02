@@ -4,6 +4,13 @@ RUN npm install -g react-native-cli
 
 RUN mkdir -p /app
 RUN mkdir -p ~/.ssh
-RUN echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+# Google Play services, revision 39
+RUN echo "y" | android update sdk -u -a -t $(android list sdk -a | grep "Google Play services, revision 39" | awk '{ print $1 }' | sed 's/.$//')
+
+# Google Repository, revision 46
+RUN echo "y" | android update sdk -u -a -t $(android list sdk -a | grep "Google Repository, revision 46" | awk '{ print $1 }' | sed 's/.$//')
+
+
 
 WORKDIR /app
