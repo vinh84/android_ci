@@ -11,6 +11,7 @@ RUN echo "y" | android update sdk -u -a -t $(android list sdk -a | grep "Google 
 # Google Repository, revision 46
 RUN echo "y" | android update sdk -u -a -t $(android list sdk -a | grep "Google Repository, revision 46" | awk '{ print $1 }' | sed 's/.$//')
 
-
+# Android SDK Build-tools, revision 25.0.2
+RUN echo "y" | android update sdk -u -a -t $(android list sdk -a | grep "Android SDK Build-tools, revision 25.0.2" | awk '{ print $1 }' | sed 's/.$//')
 
 WORKDIR /app
